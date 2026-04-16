@@ -1,0 +1,158 @@
+/* Payments Container */
+.payments-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 992px) {
+  .payments-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Payments List */
+.payments-list {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(74, 117, 84, 0.15);
+}
+
+.payments-title {
+  color: #4A7554;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.payments-title i {
+  color: #9BBF4E;
+}
+
+/* Payment Summary */
+.payment-summary {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(74, 117, 84, 0.15);
+}
+
+/* Summary Card */
+.summary-card {
+  background: linear-gradient(135deg, #5F8A61 0%, #9BBF4E 100%);
+  border-radius: 15px;
+  padding: 20px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.summary-card .amount {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.summary-card .change {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Payment Item */
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #E5DBC8;
+  transition: background 0.3s ease;
+}
+
+.payment-item:hover {
+  background: #F2EEE3;
+}
+
+.payment-item:last-child {
+  border-bottom: none;
+}
+
+.payment-info h4 {
+  color: #4A7554;
+  margin-bottom: 5px;
+}
+
+.payment-info p {
+  color: #5F6B6A;
+  font-size: 12px;
+}
+
+.payment-info p i {
+  color: #9BBF4E;
+  margin-left: 5px;
+}
+
+.payment-amount {
+  text-align: left;
+}
+
+.payment-amount .amount {
+  color: #4A7554;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.payment-amount .status {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.status.completed {
+  background: rgba(74, 117, 84, 0.1);
+  color: #4A7554;
+}
+
+.status.pending {
+  background: rgba(224, 145, 98, 0.1);
+  color: #E09162;
+}
+
+.status.failed {
+  background: rgba(224, 145, 98, 0.2);
+  color: #E09162;
+}
+
+/* Process Button */
+.process-btn {
+  margin-top: 5px;
+  padding: 3px 10px;
+  background: #5F8A61;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: 'Cairo';
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.process-btn:hover {
+  background: #4A7554;
+  transform: scale(1.05);
+}
+
+/* Chart Wrapper */
+.chart-wrapper {
+  height: 200px;
+  margin-top: 20px;
+}

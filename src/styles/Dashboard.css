@@ -1,0 +1,27 @@
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(74, 117, 84, 0.1);
+  min-height: calc(100vh - 40px);
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .dashboard-main {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,10 @@
+# السماح لجميع محركات البحث بفهرسة الموقع
+User-agent: *
+Allow: /
+
+# منع فهرسة صفحات معينة (إذا وجدت)
+Disallow: /admin/
+Disallow: /private/
+
+# موقع خريطة الموقع (اختياري)
+Sitemap: https://yourdomain.com/sitemap.xml
