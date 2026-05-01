@@ -13,18 +13,18 @@ const DriversManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMode, setModalMode] = useState('add');
   
-  // حساب الإحصائيات
+
   const activeDrivers = drivers.filter(d => d.status === 'active').length;
   const inactiveDrivers = drivers.filter(d => d.status === 'inactive').length;
   const suspendedDrivers = drivers.filter(d => d.status === 'suspended').length;
   const totalTrips = drivers.reduce((sum, d) => sum + d.totalTrips, 0);
   const avgRating = (drivers.reduce((sum, d) => sum + d.rating, 0) / drivers.length).toFixed(1);
   
-  // حساب إجمالي المكافآت
+  
   const totalBonuses = drivers.reduce((sum, d) => sum + (d.bonus || 0), 0);
   const eligibleDrivers = drivers.filter(d => isDriverEligibleForBonus(d)).length;
 
-  // فلترة السائقين
+ 
   const filteredDrivers = drivers.filter(driver => {
     const matchesSearch = driver.name.includes(search) || 
                          driver.id.includes(search) ||
@@ -86,7 +86,7 @@ const DriversManagement = () => {
       return;
     }
     
-    const revenue = driver.totalTrips * 50; // افتراض أن متوسط سعر الرحلة 50 ج.م
+    const revenue = driver.totalTrips * 50;
     const { bonus, rate } = calculateDriverBonus(revenue, driver.company);
     
     setDrivers(drivers.map(d => 
@@ -222,7 +222,7 @@ const DriversManagement = () => {
         </motion.div>
       </div>
 
-      {/* إحصائيات المكافآت */}
+      
       <div className="stats-row" style={{ marginTop: '-10px' }}>
         <motion.div
           className="driver-stat-card"
@@ -288,8 +288,8 @@ const DriversManagement = () => {
                     </div>
                     <div className="driver-details">
                       <h3>{driver.name}</h3>
-                      <p><i className="fas fa-id-card"></i>{driver.id}</p>
-                      <p><i className="fas fa-phone"></i>{driver.phone}</p>
+                      <p><i className="fas fa-id-card"></i> {driver.id}</p>
+                      <p><i className="fas fa-phone"></i> {driver.phone}</p>
                       <div className="driver-rating">
                         {[...Array(5)].map((_, i) => (
                           <i key={i} className={`fas fa-star${i < Math.floor(driver.rating) ? '' : '-o'}`}></i>
@@ -306,55 +306,55 @@ const DriversManagement = () => {
                 </div>
 
                 <div className="vehicle-info">
-                  <p><i className="fas fa-bus"></i>{driver.vehicle} - {driver.plateNumber}</p>
+                  <p><i className="fas fa-bus"></i> {driver.vehicle} - {driver.plateNumber}</p>
                   {driver.company && (
-                    <p><i className="fas fa-building"></i>{driver.company}</p>
+                    <p><i className="fas fa-building"></i> {driver.company}</p>
                   )}
                   {driver.bonus > 0 && (
-                    <p><i className="fas fa-gift"></i>المكافأة: {driver.bonus} ج.م</p>
+                    <p><i className="fas fa-gift"></i> المكافأة: {driver.bonus} ج.م</p>
                   )}
                 </div>
 
                 <div className="driver-stats">
                   <div className="driver-stat">
                     <div className="value">{driver.totalTrips}</div>
-                    <div className="label"><i className="fas fa-road"></i>رحلة</div>
+                    <div className="label"><i className="fas fa-road"></i> رحلة</div>
                   </div>
                   <div className="driver-stat">
                     <div className="value">{driver.rating}</div>
-                    <div className="label"><i className="fas fa-star"></i>التقييم</div>
+                    <div className="label"><i className="fas fa-star"></i> التقييم</div>
                   </div>
                 </div>
 
+                
                 <div className="action-buttons" onClick={(e) => e.stopPropagation()}>
                   <button
                     className="action-btn edit"
                     onClick={() => openModal('edit', driver)}
                   >
                     <i className="fas fa-edit"></i>
-                    تعديل
+                    <span>تعديل</span>
                   </button>
                   <button
                     className="action-btn suspend"
                     onClick={() => handleSuspendDriver(driver.id)}
                   >
                     <i className={`fas fa-${driver.status === 'active' ? 'ban' : 'check'}`}></i>
-                    {driver.status === 'active' ? 'تعليق' : 'تنشيط'}
+                    <span>{driver.status === 'active' ? 'تعليق' : 'تنشيط'}</span>
                   </button>
                   <button
-                    className="action-btn"
+                    className="action-btn bonus"
                     onClick={() => handleCalculateBonus(driver)}
-                    style={{ background: '#9BBF4E', color: '#FFFFFF' }}
                   >
                     <i className="fas fa-gift"></i>
-                    مكافأة
+                    <span>مكافأة</span>
                   </button>
                   <button
                     className="action-btn delete"
                     onClick={() => handleDeleteDriver(driver.id)}
                   >
                     <i className="fas fa-trash"></i>
-                    حذف
+                    <span>حذف</span>
                   </button>
                 </div>
               </motion.div>
@@ -363,7 +363,7 @@ const DriversManagement = () => {
         </div>
       )}
 
-      {/* Modal */}
+      
       <AnimatePresence>
         {showModal && (
           <div

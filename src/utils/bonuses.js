@@ -1,7 +1,6 @@
-// نسبة المكافأة من الإيرادات
 const BONUS_PERCENTAGE = parseFloat(process.env.REACT_APP_COMPANY_BONUS_PERCENTAGE) || 5;
 
-// قائمة الشركات المتعاقد معها ونسب المكافآت
+
 export const contractedCompanies = [
   { id: 1, name: 'شركة النيل للنقل', bonusRate: 5, isActive: true },
   { id: 2, name: 'شركة الأهرام للسفر', bonusRate: 7, isActive: true },
@@ -9,7 +8,7 @@ export const contractedCompanies = [
   { id: 4, name: 'شركة الصعيد للرحلات', bonusRate: 6, isActive: true },
 ];
 
-// حساب مكافأة السائق
+
 export const calculateDriverBonus = (revenue, companyName) => {
   const company = contractedCompanies.find(c => c.name === companyName);
   
@@ -27,21 +26,21 @@ export const calculateDriverBonus = (revenue, companyName) => {
   };
 };
 
-// التحقق من أهلية السائق للمكافأة
+
 export const isDriverEligibleForBonus = (driver) => {
   if (!driver.company) return false;
   
   const company = contractedCompanies.find(c => c.name === driver.company);
   if (!company || !company.isActive) return false;
   
-  // شروط إضافية: عدد الرحلات > 50، التقييم > 4
+  
   const hasEnoughTrips = (driver.totalTrips || 0) >= 50;
   const hasGoodRating = (driver.rating || 0) >= 4;
   
   return hasEnoughTrips && hasGoodRating;
 };
 
-// تحديث بيانات المكافأة للسائق
+
 export const updateDriverBonus = (driver, revenue) => {
   const eligibility = isDriverEligibleForBonus(driver);
   
@@ -62,9 +61,9 @@ export const updateDriverBonus = (driver, revenue) => {
     lastBonusDate: new Date().toISOString(),
     bonusMessage: `تم إضافة مكافأة ${bonus} ج.م بنسبة ${rate}%`,
   };
-};
+}
 
-// الحصول على إحصائيات المكافآت للشركات
+
 export const getCompanyBonusStats = (drivers) => {
   const stats = {};
   

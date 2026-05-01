@@ -1,6 +1,6 @@
 import api from './api';
 
-// المصادقة
+
 export const authAPI = {
   login: (credentials) => api.post('/auth/login', credentials),
   logout: () => api.post('/auth/logout'),

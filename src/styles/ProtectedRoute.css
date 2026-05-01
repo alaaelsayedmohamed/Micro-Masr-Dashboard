@@ -1,4 +1,3 @@
-/* Loading Container */
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -8,7 +7,7 @@
   background: linear-gradient(135deg, #4A7554 0%, #5F8A61 100%);
 }
 
-/* Loading Card */
+
 .loading-card {
   background: #FFFFFF;
   border-radius: 30px;
@@ -19,7 +18,7 @@
   width: 90%;
 }
 
-/* Loading Icon */
+
 .loading-icon {
   font-size: 60px;
   color: #5F8A61;
@@ -41,21 +40,21 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Loading Title */
+
 .loading-title {
   color: #4A7554;
   font-size: 24px;
   margin-bottom: 15px;
 }
 
-/* Loading Text */
+
 .loading-text {
   color: #5F6B6A;
   margin-bottom: 25px;
   font-size: 16px;
 }
 
-/* Progress Bar */
+
 .progress-bar {
   width: 100%;
   height: 8px;

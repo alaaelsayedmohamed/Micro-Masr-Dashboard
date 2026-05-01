@@ -82,12 +82,13 @@ const DashboardHome = () => {
     ],
   };
 
+ 
   const paymentMethodsData = {
-    labels: ['انستا باي', 'فودافون كاش'],
+    labels: ['Visa', 'فوري', 'فودافون كاش', 'محفظة'],
     datasets: [
       {
-        data: [60, 40],
-        backgroundColor: ['#4A7554', '#E09162'],
+        data: [35, 25, 25, 15],
+        backgroundColor: ['#1A1F71', '#005A9C', '#E60000', '#4A7554'],
         borderColor: '#FFFFFF',
         borderWidth: 2,
       },
@@ -152,7 +153,35 @@ const DashboardHome = () => {
             size: 12,
           },
           color: '#2C3E2F',
+          
+          generateLabels: (chart) => {
+            const data = chart.data;
+            const labels = data.labels;
+            const colors = data.datasets[0].backgroundColor;
+            
+            return labels.map((label, i) => ({
+              text: label,
+              fillStyle: colors[i],
+              index: i,
+              fontColor: '#2C3E2F',
+              
+              icon: label === 'Visa' ? 'fab fa-cc-visa' : 
+                    label === 'فوري' ? 'fas fa-qrcode' :
+                    label === 'فودافون كاش' ? 'fas fa-mobile-alt' : 'fas fa-wallet'
+            }));
+          }
         },
+      },
+      tooltip: {
+        rtl: true,
+        backgroundColor: '#4A7554',
+        callbacks: {
+          label: (context) => {
+            const label = context.label || '';
+            const value = context.raw || 0;
+            return `${label}: ${value}%`;
+          }
+        }
       },
     },
   };
@@ -321,6 +350,25 @@ const DashboardHome = () => {
           </h3>
           <div className="chart-wrapper">
             <Pie data={paymentMethodsData} options={pieOptions} />
+          </div>
+         
+          <div className="payment-methods-legend">
+            <div className="legend-item">
+              <i className="fab fa-cc-visa" style={{ color: '#1A1F71' }}></i>
+              <span>Visa (35%)</span>
+            </div>
+            <div className="legend-item">
+              <i className="fas fa-qrcode" style={{ color: '#005A9C' }}></i>
+              <span>فوري (25%)</span>
+            </div>
+            <div className="legend-item">
+              <i className="fas fa-mobile-alt" style={{ color: '#E60000' }}></i>
+              <span>فودافون كاش (25%)</span>
+            </div>
+            <div className="legend-item">
+              <i className="fas fa-wallet" style={{ color: '#4A7554' }}></i>
+              <span>محفظة (15%)</span>
+            </div>
           </div>
         </motion.div>
 

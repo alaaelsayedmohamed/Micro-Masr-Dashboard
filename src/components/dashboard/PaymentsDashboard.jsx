@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { paymentsData } from '../../data/mockData';
+import { paymentsData, paymentMethodsList } from '../../data/mockData';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { showSuccess, showPaymentNotification } from '../../utils/notifications';
 import '../../styles/PaymentsDashboard.css';
@@ -8,7 +8,6 @@ import '../../styles/PaymentsDashboard.css';
 const PaymentsDashboard = () => {
   const [payments, setPayments] = useState(paymentsData);
 
-  // حساب الإحصائيات
   const totalAmount = payments.reduce((sum, p) => sum + p.amount, 0);
   const completedAmount = payments
     .filter(p => p.status === 'completed')
@@ -17,10 +16,43 @@ const PaymentsDashboard = () => {
     .filter(p => p.status === 'pending')
     .reduce((sum, p) => sum + p.amount, 0);
 
-  // بيانات الرسم البياني
+
+  const getMethodStats = () => {
+    const stats = {};
+    payments.forEach(payment => {
+      if (payment.status === 'completed') {
+        stats[payment.method] = (stats[payment.method] || 0) + payment.amount;
+      }
+    });
+    return stats;
+  };
+
+  const methodStats = getMethodStats();
+
+  const getPaymentIcon = (method) => {
+    const found = paymentMethodsList.find(m => m.id === method);
+    return found ? found.icon : 'fas fa-credit-card';
+  };
+
+  const getPaymentName = (method) => {
+    const found = paymentMethodsList.find(m => m.id === method);
+    return found ? found.name : method;
+  };
+
+  const getPaymentColor = (method) => {
+    const found = paymentMethodsList.find(m => m.id === method);
+    return found ? found.color : '#4A7554';
+  };
+
   const chartData = payments.map(p => ({
     name: p.id,
     amount: p.amount
+  }));
+
+  const paymentMethodsChartData = Object.entries(methodStats).map(([method, amount]) => ({
+    name: getPaymentName(method),
+    amount: amount,
+    method: method
   }));
 
   const handlePaymentAction = (payment, action) => {
@@ -62,8 +94,10 @@ const PaymentsDashboard = () => {
               <p>
                 <i className="fas fa-hashtag"></i>
                 {payment.tripId}
-                <i className="fas fa-credit-card" style={{ marginRight: '10px' }}></i>
-                {payment.method}
+              </p>
+              <p>
+                <i className={getPaymentIcon(payment.method)} style={{ marginLeft: '5px', color: getPaymentColor(payment.method) }}></i>
+                {getPaymentName(payment.method)}
               </p>
             </div>
             <div className="payment-amount">
@@ -108,6 +142,22 @@ const PaymentsDashboard = () => {
           <h3>المدفوعات المعلقة</h3>
           <div className="amount">{pendingAmount.toLocaleString()} ج.م</div>
           <div className="change">{((pendingAmount/totalAmount)*100).toFixed(1)}٪ من الإجمالي</div>
+        </div>
+
+       
+        <div className="payment-methods-stats">
+          <h3><i className="fas fa-chart-pie"></i> توزيع طرق الدفع</h3>
+          <div className="methods-grid">
+            {paymentMethodsChartData.map((method, index) => (
+              <div key={index} className="method-item">
+                <div className="method-info">
+                  <i className={getPaymentIcon(method.method)} style={{ color: getPaymentColor(method.method) }}></i>
+                  <span>{method.name}</span>
+                </div>
+                <div className="method-amount">{method.amount.toLocaleString()} ج.م</div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="chart-wrapper">

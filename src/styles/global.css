@@ -12,7 +12,7 @@ body {
   direction: rtl;
 }
 
-/* تنسيق شريط التمرير */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -32,13 +32,12 @@ body {
   background: #4A7554;
 }
 
-/* تنسيق الخريطة */
 .leaflet-container {
   direction: ltr;
   font-family: 'Cairo', sans-serif;
 }
 
-/* تنسيق المودال */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -53,7 +52,7 @@ body {
   z-index: 1000;
 }
 
-/* تنسيق الجداول */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -71,7 +70,7 @@ th {
   font-weight: 600;
 }
 
-/* تنسيق الأزرار */
+
 button {
   cursor: pointer;
   font-family: 'Cairo', sans-serif;
@@ -83,7 +82,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* تنسيق الحقول */
+
 input, select, textarea {
   font-family: 'Cairo', sans-serif;
   transition: all 0.3s ease;
@@ -95,7 +94,7 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(95, 138, 97, 0.1);
 }
 
-/* تنسيق الرسوم البيانية */
+
 .recharts-wrapper {
   direction: ltr;
 }
@@ -107,7 +106,7 @@ input:focus, select:focus, textarea:focus {
   font-family: 'Cairo', sans-serif !important;
 }
 
-/* تنسيق النوتيفيكيشن */
+
 .Toastify__toast-container {
   direction: rtl;
 }
@@ -117,7 +116,7 @@ input:focus, select:focus, textarea:focus {
   border-radius: 15px !important;
 }
 
-/* تنسيق الماركر المخصص للخريطة */
+
 .custom-marker {
   background: transparent;
   border: none;

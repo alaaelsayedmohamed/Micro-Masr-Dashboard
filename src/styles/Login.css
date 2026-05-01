@@ -1,58 +1,110 @@
-/* Login Container */
 .login-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #4A7554 0%, #5F8A61 100%);
+  background: linear-gradient(135deg, 
+    #4A7554 0%,
+    #5F8A61 25%,
+    #E5DBC8 50%,
+    #E09162 75%,
+    #4A7554 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
   padding: 20px;
 }
 
-/* Login Card */
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 .login-card {
   background: #FFFFFF;
-  border-radius: 30px;
-  padding: 50px;
+  border-radius: 35px;
+  padding: 25px 35px;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0 25px 50px rgba(74, 117, 84, 0.15);
-  border: 1px solid #E5DBC8;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0px);
 }
 
-/* Logo Section */
+
 .login-logo {
   text-align: center;
-  margin-bottom: 30px;
-}
-
-/* تنسيق صورة اللوجو */
-.logo-image {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
   margin-bottom: 15px;
-  border-radius: 50%;
-  background: #F2EEE3;
-  padding: 15px;
 }
 
-.login-logo h1 {
-  font-size: 36px;
-  color: #4A7554;
-  font-weight: 700;
-  margin-bottom: 10px;
+
+.main-logo-image {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease;
 }
+
+.main-logo-image:hover {
+  transform: scale(1.02);
+}
+
+
+.centered-logo {
+  width: 250px;
+  height: 250px;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .login-logo p {
-  color: #5F6B6A;
-  font-size: 16px;
+  color: #2C3E2F;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
-/* باقي التنسيق كما هو */
+
+.login-logo h1 {
+  display: none;
+}
+
+.small-logo {
+  display: none;
+}
+
+
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
+  margin-top: 10px;
 }
 
 .input-group {
@@ -61,29 +113,29 @@
 
 .input-group i {
   position: absolute;
-  right: 15px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   color: #5F8A61;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .input-group input {
   width: 100%;
-  padding: 15px 45px 15px 15px;
+  padding: 12px 40px 12px 12px;
   border: 2px solid #E5DBC8;
-  border-radius: 15px;
-  font-size: 16px;
+  border-radius: 12px;
+  font-size: 14px;
   font-family: 'Cairo', sans-serif;
   transition: all 0.3s ease;
-  background: #F2EEE3;
+  background: #F9F7F2;
   text-align: right;
 }
 
 .input-group input:focus {
   outline: none;
   border-color: #5F8A61;
-  box-shadow: 0 0 0 3px rgba(95, 138, 97, 0.1);
+  box-shadow: 0 0 0 3px rgba(95, 138, 97, 0.15);
 }
 
 .input-group input.error {
@@ -91,66 +143,119 @@
 }
 
 .input-group input::placeholder {
-  color: #5F6B6A;
+  color: #A0A8A7;
+  font-size: 13px;
 }
 
 .error-message {
   color: #E09162;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  margin: 5px 0;
 }
 
 .login-button {
   background: linear-gradient(135deg, #4A7554 0%, #5F8A61 100%);
   color: #FFFFFF;
   border: none;
-  padding: 15px;
-  border-radius: 15px;
-  font-size: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #3D6347 0%, #4E7A50 100%);
+  box-shadow: 0 5px 15px rgba(74, 117, 84, 0.3);
 }
 
 .login-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
-.demo-credentials {
-  margin-top: 30px;
-  padding: 20px;
-  background: #F2EEE3;
-  border-radius: 15px;
-  text-align: center;
+
+@keyframes cardGlow {
+  0% {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 25px 50px rgba(74, 117, 84, 0.3);
+  }
+  100% {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.demo-credentials p {
-  color: #4A7554;
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 18px;
+.login-card {
+  animation: cardGlow 3s ease-in-out infinite;
 }
 
-.credential-item {
-  color: #2C3E2F;
-  font-size: 14px;
-  margin: 8px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  direction: ltr;
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.credential-item i {
-  color: #9BBF4E;
+.login-card {
+  animation: cardEntrance 0.5s ease-out, cardGlow 3s ease-in-out infinite;
+}
+
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 20px 25px;
+    max-width: 350px;
+  }
+  
+  .main-logo-image {
+    width: 260px;
+    height: 260px;
+  }
+  
+  .login-logo p {
+    font-size: 12px;
+  }
+  
+  .input-group input {
+    padding: 10px 38px 10px 10px;
+    font-size: 13px;
+  }
+  
+  .login-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .login-card {
+    padding: 15px 20px;
+    max-width: 300px;
+  }
+  
+  .main-logo-image {
+    width: 220px;
+    height: 220px;
+  }
 }

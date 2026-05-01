@@ -9,7 +9,13 @@ import {
 import { chartData } from '../../data/mockData';
 import '../../styles/RealCharts.css';
 
-const COLORS = ['#4A7554', '#E09162'];
+
+const PAYMENT_COLORS = {
+  visa: '#1A1F71',
+  fawry: '#005A9C',
+  vodafone: '#E60000',
+  wallet: '#4A7554'
+};
 
 const RealCharts = () => {
   const totalTrips = chartData.weeklyStats.trips.reduce((a, b) => a + b, 0);
@@ -46,9 +52,17 @@ const RealCharts = () => {
     { name: 'يونيو', هذا_العام: 225000, العام_الماضي: 200000 },
   ];
 
+  
+  const paymentMethodsData = [
+    { name: 'Visa', value: 35, color: PAYMENT_COLORS.visa, icon: 'fab fa-cc-visa' },
+    { name: 'فوري', value: 25, color: PAYMENT_COLORS.fawry, icon: 'fas fa-qrcode' },
+    { name: 'فودافون كاش', value: 25, color: PAYMENT_COLORS.vodafone, icon: 'fas fa-mobile-alt' },
+    { name: 'محفظة', value: 15, color: PAYMENT_COLORS.wallet, icon: 'fas fa-wallet' }
+  ];
+
   const handleExport = (format) => {
     console.log(`تصدير ${format}`);
-    // سيتم ربطه بالـ API لاحقاً
+    // يتربط بالـ API 
   };
 
   return (
@@ -216,10 +230,7 @@ const RealCharts = () => {
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
-                data={[
-                  { name: 'انستا باي', value: 60 },
-                  { name: 'فودافون كاش', value: 40 }
-                ]}
+                data={paymentMethodsData}
                 cx="50%"
                 cy="50%"
                 labelLine={false}
@@ -228,8 +239,9 @@ const RealCharts = () => {
                 fill="#8884d8"
                 dataKey="value"
               >
-                <Cell fill="#4A7554" />
-                <Cell fill="#E09162" />
+                {paymentMethodsData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
               </Pie>
               <Tooltip 
                 formatter={(value) => `${value}%`}
@@ -238,6 +250,17 @@ const RealCharts = () => {
                   border: '1px solid #9BBF4E',
                   borderRadius: '10px',
                   fontFamily: 'Cairo'
+                }}
+              />
+              <Legend 
+                formatter={(value, entry, index) => {
+                  const { color, icon } = paymentMethodsData[index];
+                  return (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                      <i className={icon} style={{ color: color }}></i>
+                      {value}
+                    </span>
+                  );
                 }}
               />
             </PieChart>
@@ -344,21 +367,7 @@ const RealCharts = () => {
             </ComposedChart>
           </ResponsiveContainer>
         </motion.div>
-      </div>
-
-      <div className="export-buttons">
-        <button className="export-btn" onClick={() => handleExport('PDF')}>
-          <i className="fas fa-file-pdf"></i>
-          تصدير PDF
-        </button>
-        <button className="export-btn primary" onClick={() => handleExport('Excel')}>
-          <i className="fas fa-file-excel"></i>
-          تصدير Excel
-        </button>
-        <button className="export-btn" onClick={() => handleExport('Print')}>
-          <i className="fas fa-print"></i>
-          طباعة
-        </button>
+        
       </div>
     </div>
   );

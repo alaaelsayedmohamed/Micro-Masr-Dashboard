@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 
-// إشعارات النجاح
+
 export const showSuccess = (message) => {
   toast.success(message, {
     duration: 3000,
@@ -17,7 +17,7 @@ export const showSuccess = (message) => {
   });
 };
 
-// إشعارات الخطأ
+
 export const showError = (message) => {
   toast.error(message, {
     duration: 4000,
@@ -34,7 +34,7 @@ export const showError = (message) => {
   });
 };
 
-// إشعارات تحذير
+
 export const showWarning = (message) => {
   toast(message, {
     duration: 3500,
@@ -52,7 +52,7 @@ export const showWarning = (message) => {
   });
 };
 
-// إشعارات معلومات
+
 export const showInfo = (message) => {
   toast(message, {
     duration: 3000,
@@ -70,7 +70,7 @@ export const showInfo = (message) => {
   });
 };
 
-// إشعارات مخصصة للرحلات
+
 export const showTripNotification = (tripNumber, action) => {
   const messages = {
     added: `تم إضافة الرحلة ${tripNumber} بنجاح`,
@@ -94,7 +94,7 @@ export const showTripNotification = (tripNumber, action) => {
   });
 };
 
-// إشعارات مخصصة للسائقين
+
 export const showDriverNotification = (driverName, action) => {
   const messages = {
     added: `تم إضافة السائق ${driverName} بنجاح`,
@@ -117,7 +117,7 @@ export const showDriverNotification = (driverName, action) => {
   });
 };
 
-// إشعارات مخصصة للمدفوعات
+
 export const showPaymentNotification = (amount, action) => {
   const messages = {
     received: `تم استلام مبلغ ${amount} ج.م`,
@@ -138,7 +138,7 @@ export const showPaymentNotification = (amount, action) => {
   });
 };
 
-// إشعارات تحميل
+
 export const showLoading = (message) => {
   return toast.loading(message, {
     position: 'top-center',
@@ -154,7 +154,7 @@ export const showLoading = (message) => {
   });
 };
 
-// تأكيد الإجراء (Confirm)
+
 export const showConfirm = (message, onConfirm) => {
   if (window.confirm(message)) {
     onConfirm();

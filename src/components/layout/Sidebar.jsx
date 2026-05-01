@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { showSuccess } from '../../utils/notifications';
 import '../../styles/Sidebar.css';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -14,6 +15,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     { path: '/dashboard/stations', icon: 'fa-map-marked-alt', text: 'المحطات' },
     { path: '/dashboard/payments', icon: 'fa-credit-card', text: 'المدفوعات' },
     { path: '/dashboard/charts', icon: 'fa-chart-line', text: 'التقارير' },
+    { path: '/dashboard/offers', icon: 'fa-gift', text: 'المكافآت والعروض' },
   ];
 
   const handleNavigation = (path) => {
@@ -22,7 +24,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    showSuccess('تم تسجيل الخروج بنجاح');
     window.location.href = '/login';
+  };
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -33,11 +40,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     >
       <motion.button
         className="toggle-btn"
-        onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.1, rotate: 180 }}
+        onClick={handleToggle}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        animate={{ rotate: isOpen ? 0 : 180 }}
       >
-        <i className={`fas fa-chevron-${isOpen ? 'right' : 'left'}`}></i>
+        <i className={`fas fa-chevron-${isOpen ? 'left' : 'right'}`}></i>
       </motion.button>
 
       <div className="sidebar-logo">

@@ -7,7 +7,7 @@ import { stationsData } from '../../data/mockData';
 import { showSuccess, showInfo } from '../../utils/notifications';
 import '../../styles/StationsMap.css';
 
-// حل مشكلة الأيقونات في React Leaflet
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// إنشاء أيقونات مخصصة للمحطات
+
 const createCustomIcon = (status, isSelected) => {
   const color = status === 'active' ? '#4A7554' : 
                 status === 'maintenance' ? '#E09162' : '#9BBF4E';
@@ -56,16 +56,16 @@ const StationsMap = () => {
   const [stations, setStations] = useState(stationsData);
   const [filter, setFilter] = useState('all');
   const [selectedStation, setSelectedStation] = useState(null);
-  const [mapCenter, setMapCenter] = useState([30.0444, 31.2357]); // القاهرة
+  const [mapCenter, setMapCenter] = useState([30.0444, 31.2357]); 
   const [mapZoom, setMapZoom] = useState(8);
 
-  // حساب الإحصائيات
+  
   const activeStations = stations.filter(s => s.status === 'active').length;
   const totalBuses = stations.reduce((sum, s) => sum + s.activeBuses, 0);
   const totalCapacity = stations.reduce((sum, s) => sum + s.capacity, 0);
   const maintenanceStations = stations.filter(s => s.status === 'maintenance').length;
 
-  // تصفية المحطات
+  
   const filteredStations = stations.filter(station => {
     if (filter === 'all') return true;
     if (filter === 'active') return station.status === 'active';

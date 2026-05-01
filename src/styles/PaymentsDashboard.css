@@ -1,4 +1,3 @@
-/* Payments Container */
 .payments-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -11,7 +10,6 @@
   }
 }
 
-/* Payments List */
 .payments-list {
   background: #FFFFFF;
   border-radius: 20px;
@@ -31,7 +29,7 @@
   color: #9BBF4E;
 }
 
-/* Payment Summary */
+
 .payment-summary {
   background: #FFFFFF;
   border-radius: 20px;
@@ -39,7 +37,7 @@
   box-shadow: 0 10px 30px rgba(74, 117, 84, 0.15);
 }
 
-/* Summary Card */
+
 .summary-card {
   background: linear-gradient(135deg, #5F8A61 0%, #9BBF4E 100%);
   border-radius: 15px;
@@ -65,7 +63,7 @@
   opacity: 0.8;
 }
 
-/* Payment Item */
+
 .payment-item {
   display: flex;
   justify-content: space-between;
@@ -131,7 +129,7 @@
   color: #E09162;
 }
 
-/* Process Button */
+
 .process-btn {
   margin-top: 5px;
   padding: 3px 10px;
@@ -151,7 +149,6 @@
   transform: scale(1.05);
 }
 
-/* Chart Wrapper */
 .chart-wrapper {
   height: 200px;
   margin-top: 20px;

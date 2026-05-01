@@ -1,4 +1,3 @@
-/* Drivers Container */
 .drivers-container {
   background: #FFFFFF;
   border-radius: 20px;
@@ -6,7 +5,7 @@
   box-shadow: 0 10px 30px rgba(74, 117, 84, 0.15);
 }
 
-/* Header */
+
 .drivers-header {
   display: flex;
   justify-content: space-between;
@@ -28,7 +27,6 @@
   color: #9BBF4E;
 }
 
-/* Search Section */
 .search-section {
   display: flex;
   gap: 15px;
@@ -64,7 +62,7 @@
   border-color: #5F8A61;
 }
 
-/* Filter Group */
+
 .filter-group {
   display: flex;
   gap: 10px;
@@ -94,7 +92,7 @@
   transform: scale(1.05);
 }
 
-/* Add Button */
+
 .add-button {
   background: linear-gradient(135deg, #5F8A61 0%, #9BBF4E 100%);
   color: #FFFFFF;
@@ -115,7 +113,7 @@
   transform: scale(1.05);
 }
 
-/* Stats Row */
+
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -135,7 +133,6 @@
   }
 }
 
-/* Stat Card */
 .driver-stat-card {
   background: linear-gradient(135deg, #5F8A61 0%, #9BBF4E 100%);
   border-radius: 15px;
@@ -178,19 +175,19 @@
   opacity: 0.9;
 }
 
-/* Drivers Grid */
+
 .drivers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 25px;
   margin-top: 25px;
 }
 
-/* Driver Card */
+
 .driver-card {
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 20px;
+  padding: 22px;
   border: 2px solid #E5DBC8;
   position: relative;
   overflow: hidden;
@@ -228,7 +225,7 @@
   background: #E09162;
 }
 
-/* Driver Header */
+
 .driver-header {
   display: flex;
   justify-content: space-between;
@@ -284,8 +281,8 @@
 
 .driver-details h3 {
   color: #4A7554;
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .driver-details p {
@@ -293,8 +290,8 @@
   font-size: 13px;
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 3px;
+  gap: 6px;
+  margin-bottom: 4px;
 }
 
 .driver-details p i {
@@ -302,7 +299,7 @@
   width: 16px;
 }
 
-/* Rating */
+
 .driver-rating {
   display: flex;
   align-items: center;
@@ -321,7 +318,7 @@
   font-weight: 600;
 }
 
-/* Status Badge */
+
 .status-badge {
   padding: 5px 12px;
   border-radius: 20px;
@@ -344,7 +341,7 @@
   color: #E09162;
 }
 
-/* Vehicle Info */
+
 .vehicle-info {
   background: #F2EEE3;
   border-radius: 12px;
@@ -365,7 +362,7 @@
   width: 18px;
 }
 
-/* Driver Stats */
+
 .driver-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -382,14 +379,14 @@
 
 .driver-stat .value {
   color: #4A7554;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 3px;
 }
 
 .driver-stat .label {
   color: #5F6B6A;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .driver-stat .label i {
@@ -397,49 +394,81 @@
   margin-left: 3px;
 }
 
-/* Action Buttons */
+
 .action-buttons {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   margin-top: 15px;
+  flex-wrap: wrap;
 }
 
 .action-btn {
   flex: 1;
-  padding: 10px;
+  padding: 10px 12px;
   border: none;
   border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 75px;
+}
+
+.action-btn i {
+  font-size: 13px;
+}
+
+.action-btn span {
+  font-size: 13px;
 }
 
 .action-btn.edit {
-  background: #F2EEE3;
-  color: #4A7554;
-  border: 1px solid #E5DBC8;
+  background: #9BBF4E;
+  color: #FFFFFF;
 }
 
 .action-btn.suspend {
-  background: rgba(224, 145, 98, 0.1);
-  color: #E09162;
+  background: #E09162;
+  color: #FFFFFF;
+}
+
+.action-btn.bonus {
+  background: #4A7554;
+  color: #FFFFFF;
 }
 
 .action-btn.delete {
-  background: rgba(224, 145, 98, 0.2);
-  color: #E09162;
+  background: #D32F2F;
+  color: #FFFFFF;
 }
 
 .action-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Modal */
+.action-btn:active {
+  transform: translateY(0);
+}
+
+
+@media (max-width: 500px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  .action-btn {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -497,7 +526,7 @@
   color: #E09162;
 }
 
-/* Form */
+
 .driver-form {
   display: flex;
   flex-direction: column;
@@ -561,7 +590,7 @@
   transform: scale(1.02);
 }
 
-/* Empty State */
+
 .empty-state {
   text-align: center;
   padding: 50px;

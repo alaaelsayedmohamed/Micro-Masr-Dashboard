@@ -1,11 +1,10 @@
-/* Reports Container */
 .reports-container {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-/* Reports Header */
+
 .reports-header {
   display: flex;
   justify-content: space-between;
@@ -27,7 +26,7 @@
   color: #9BBF4E;
 }
 
-/* Date Range */
+
 .date-range {
   background: #F2EEE3;
   padding: 10px 20px;
@@ -40,7 +39,6 @@
   border: 1px solid #E5DBC8;
 }
 
-/* Stats Row */
 .reports-stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -60,7 +58,7 @@
   }
 }
 
-/* Stat Card */
+
 .reports-stat-card {
   background: #FFFFFF;
   border-radius: 15px;
@@ -93,7 +91,7 @@
   margin-bottom: 5px;
 }
 
-/* Charts Grid */
+
 .reports-charts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -106,7 +104,7 @@
   }
 }
 
-/* Chart Card */
+
 .reports-chart-card {
   background: #FFFFFF;
   border-radius: 20px;
@@ -134,7 +132,7 @@
   font-size: 20px;
 }
 
-/* Export Buttons */
+
 .export-buttons {
   display: flex;
   gap: 10px;

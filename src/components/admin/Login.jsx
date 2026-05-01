@@ -5,8 +5,7 @@ import { showSuccess, showError } from '../../utils/notifications';
 import { usersData } from '../../data/mockData';
 import '../../styles/Login.css';
 
-// استيراد صورة اللوجو
-import logo from '../../assets/logo.png';
+import logo2 from '../../assets/logo2.png';
 
 const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setLoading(true);
 
-    // محاكاة تأخير الشبكة
     setTimeout(() => {
       const user = usersData.find(
         u => u.username === credentials.username && u.password === credentials.password
@@ -33,7 +31,6 @@ const Login = ({ setIsAuthenticated }) => {
         showSuccess(`مرحباً ${user.name}، تم تسجيل الدخول بنجاح`);
         localStorage.setItem('user', JSON.stringify(user));
         setIsAuthenticated(true);
-        // استخدام replace بدلاً من navigate العادي
         navigate('/dashboard', { replace: true });
       } else {
         setError('اسم المستخدم أو كلمة المرور غير صحيحة');
@@ -58,15 +55,14 @@ const Login = ({ setIsAuthenticated }) => {
       >
         <motion.div
           className="login-logo"
-          animate={{ scale: [1, 1.05, 1] }}
+          animate={{ scale: [1, 1.02, 1] }}
           transition={{ duration: 3, repeat: Infinity }}
         >
-          <img 
-            src={logo} 
-            alt="شعار ميكرو مصر" 
-            className="logo-image"
+<img 
+            src={logo2} 
+            alt="ميكرو مصر" 
+            className="centered-logo"
           />
-          <h1>ميكرو مصر</h1>
           <p>نظام إدارة النقل الذكي</p>
         </motion.div>
 
@@ -128,23 +124,6 @@ const Login = ({ setIsAuthenticated }) => {
             )}
           </motion.button>
         </form>
-
-        <motion.div
-          className="demo-credentials"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <p>بيانات الدخول التجريبية</p>
-          <div className="credential-item">
-            <i className="fas fa-user"></i>
-            <span>admin / admin123</span>
-          </div>
-          <div className="credential-item">
-            <i className="fas fa-user"></i>
-            <span>supervisor / super123</span>
-          </div>
-        </motion.div>
       </motion.div>
     </motion.div>
   );

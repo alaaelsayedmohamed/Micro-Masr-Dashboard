@@ -9,6 +9,8 @@ import StationsMap from './StationsMap';
 import PaymentsDashboard from './PaymentsDashboard';
 import RealCharts from './RealCharts';
 import DashboardHome from './DashboardHome';
+import OffersManagement from './OffersManagement';
+import AdminProfile from './AdminProfile';
 import '../../styles/Dashboard.css';
 
 const Dashboard = () => {
@@ -33,6 +35,8 @@ const Dashboard = () => {
           <Route path="/stations" element={<StationsMap />} />
           <Route path="/payments" element={<PaymentsDashboard />} />
           <Route path="/charts" element={<RealCharts />} />
+          <Route path="/offers" element={<OffersManagement />} />
+          <Route path="/profile" element={<AdminProfile />} />
         </Routes>
       </motion.main>
     </div>

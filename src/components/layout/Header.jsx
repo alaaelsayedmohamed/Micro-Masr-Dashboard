@@ -36,7 +36,11 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('user');
     showSuccess('تم تسجيل الخروج بنجاح');
-    window.location.href = '/login';window.location.href = '/login'; window.location.href = '/login';
+    navigate('/login', { replace: true });
+  };
+
+  const handleProfileClick = () => {
+    navigate('/dashboard/profile');
   };
 
   const notifications = [
@@ -114,8 +118,8 @@ const Header = () => {
         <motion.div
           className="user-profile"
           whileHover={{ scale: 1.02 }}
-          onClick={handleLogout}
-          title="تسجيل الخروج"
+          onClick={handleProfileClick}
+          title="الملف الشخصي"
         >
           <div className="user-avatar">
             {user?.name?.charAt(0) || 'أ'}

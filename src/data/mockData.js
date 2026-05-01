@@ -77,7 +77,7 @@ export const tripsData = [
   }
 ];
 
-// بيانات السائقين (محدثة بإضافة الشركات والمكافآت)
+// بيانات السائقين 
 export const driversData = [
   {
     id: "DR-001",
@@ -173,7 +173,7 @@ export const paymentsData = [
     tripId: "TR-2024-001",
     passengerName: "محمد عبدالله",
     amount: 250,
-    method: "انستا باي",
+    method: "visa",
     status: "completed",
     date: "2024-03-15 08:15",
     reference: "REF-123456"
@@ -183,7 +183,7 @@ export const paymentsData = [
     tripId: "TR-2024-001",
     passengerName: "فاطمة أحمد",
     amount: 250,
-    method: "فودافون كاش",
+    method: "vodafone",
     status: "completed",
     date: "2024-03-15 08:20",
     reference: "REF-123457"
@@ -193,7 +193,7 @@ export const paymentsData = [
     tripId: "TR-2024-002",
     passengerName: "عمر خالد",
     amount: 380,
-    method: "انستا باي",
+    method: "visa",
     status: "pending",
     date: "2024-03-15 09:45",
     reference: "REF-123458"
@@ -203,7 +203,7 @@ export const paymentsData = [
     tripId: "TR-2024-003",
     passengerName: "سارة محمود",
     amount: 180,
-    method: "فودافون كاش",
+    method: "fawry",
     status: "failed",
     date: "2024-03-15 10:30",
     reference: "REF-123459"
@@ -213,11 +213,19 @@ export const paymentsData = [
     tripId: "TR-2024-004",
     passengerName: "نور الدين",
     amount: 420,
-    method: "انستا باي",
+    method: "wallet",
     status: "completed",
     date: "2024-03-15 11:15",
     reference: "REF-123460"
   }
+];
+
+// طرق الدفع
+export const paymentMethodsList = [
+  { id: 'visa', name: 'Visa', icon: 'fab fa-cc-visa', color: '#1A1F71' },
+  { id: 'fawry', name: 'فوري', icon: 'fas fa-qrcode', color: '#005A9C' },
+  { id: 'vodafone', name: 'فودافون كاش', icon: 'fas fa-mobile-alt', color: '#E60000' },
+  { id: 'wallet', name: 'محفظة', icon: 'fas fa-wallet', color: '#4A7554' }
 ];
 
 // بيانات المحطات للخريطة
@@ -295,8 +303,8 @@ export const chartData = {
     values: [45, 52, 48, 61, 58, 35, 42]
   },
   paymentMethods: {
-    labels: ["انستا باي", "فودافون كاش"],
-    values: [60, 40]
+    labels: ["Visa", "فوري", "فودافون كاش", "محفظة"],
+    values: [35, 25, 25, 15]
   },
   driverPerformance: {
     labels: ["أحمد علي", "محمد حسن", "خالد محمود", "سعيد عمر", "إبراهيم ناصر"],
@@ -317,15 +325,25 @@ export const usersData = [
     username: "admin",
     password: "admin123",
     role: "مدير النظام",
-    name: "أحمد المدير",
-    avatar: "https://randomuser.me/api/portraits/men/10.jpg"
+    name: "أحمد محمد",
+    email: "ahmed@microeg.com",
+    phone: "01234567890",
+    address: "القاهرة، مصر",
+    department: "الإدارة العليا",
+    joinDate: "2024-01-01",
+    avatar: null
   },
   {
     id: 2,
     username: "supervisor",
     password: "super123",
     role: "مشرف",
-    name: "محمد المشرف",
-    avatar: "https://randomuser.me/api/portraits/men/11.jpg"
+    name: "محمد السيد",
+    email: "mohamed@microeg.com",
+    phone: "01234567891",
+    address: "الجيزة، مصر",
+    department: "المشرفين",
+    joinDate: "2024-02-15",
+    avatar: null
   }
 ];
