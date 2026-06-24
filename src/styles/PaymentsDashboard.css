@@ -153,3 +153,88 @@
   height: 200px;
   margin-top: 20px;
 }
+
+
+.payment-actions {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.payment-actions button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.payment-actions .process-btn {
+  background: #4A7554;
+  color: white;
+}
+
+.payment-actions .process-btn:hover {
+  background: #5F8A61;
+  transform: scale(1.05);
+}
+
+.payment-actions .cancel-btn {
+  background: #E09162;
+  color: white;
+}
+
+.payment-actions .cancel-btn:hover {
+  background: #d4814a;
+  transform: scale(1.05);
+}
+
+.payment-actions .refund-btn {
+  background: #9BBF4E;
+  color: white;
+}
+
+.payment-actions .refund-btn:hover {
+  background: #8aad42;
+  transform: scale(1.05);
+}
+
+.payment-actions .delete-btn {
+  background: #E5DBC8;
+  color: #5F6B6A;
+}
+
+.payment-actions .delete-btn:hover {
+  background: #d5cbb8;
+  transform: scale(1.05);
+}
+
+.payment-actions .refunded-label {
+  padding: 4px 10px;
+  background: #E5DBC8;
+  color: #5F6B6A;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+  .payment-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .payment-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}

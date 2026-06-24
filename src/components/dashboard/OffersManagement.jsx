@@ -9,7 +9,7 @@ const OffersManagement = () => {
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [modalMode, setModalMode] = useState('add');
 
-  // تحميل البيانات من localStorage (محاكاة للـ API)
+  
   useEffect(() => {
     const savedOffers = localStorage.getItem('offers');
     if (savedOffers) {

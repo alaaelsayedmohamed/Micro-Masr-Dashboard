@@ -1,10 +1,20 @@
+/* StationsMap.css */
+:root {
+  --primary: #4A7554;
+  --primary-light: #5F8A61;
+  --secondary: #9BBF4E;
+  --background: #F2EEB3;
+  --background-light: #E5DBC8;
+  --bg-input: #F2EEE3;
+  --accent: #E09162;
+}
+
 .map-container {
   background: #FFFFFF;
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 10px 30px rgba(74, 117, 84, 0.15);
 }
-
 
 .map-header {
   display: flex;
@@ -16,7 +26,7 @@
 }
 
 .map-title {
-  color: #4A7554;
+  color: var(--primary);
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -24,7 +34,7 @@
 }
 
 .map-title i {
-  color: #9BBF4E;
+  color: var(--secondary);
 }
 
 .map-controls {
@@ -34,11 +44,31 @@
   flex-wrap: wrap;
 }
 
+.add-station-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.add-station-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(74, 117, 84, 0.3);
+}
+
 .map-filter-btn {
   padding: 10px 20px;
   border: none;
   border-radius: 12px;
-  background: #F2EEE3;
+  background: var(--bg-input);
   color: #2C3E2F;
   cursor: pointer;
   font-weight: 500;
@@ -50,12 +80,12 @@
 }
 
 .map-filter-btn.active {
-  background: linear-gradient(135deg, #5F8A61 0%, #9BBF4E 100%);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
   color: #FFFFFF;
 }
 
 .map-filter-btn i {
-  color: #5F8A61;
+  color: var(--primary-light);
 }
 
 .map-filter-btn.active i {
@@ -65,7 +95,6 @@
 .map-filter-btn:hover {
   transform: scale(1.05);
 }
-
 
 .map-stats-row {
   display: grid;
@@ -86,13 +115,12 @@
   }
 }
 
-
 .map-stat-card {
   background: #FFFFFF;
   border-radius: 15px;
   padding: 15px;
   text-align: center;
-  border: 1px solid #E5DBC8;
+  border: 1px solid var(--background-light);
   box-shadow: 0 5px 15px rgba(74, 117, 84, 0.15);
 }
 
@@ -106,27 +134,25 @@
 }
 
 .map-stat-label i {
-  color: #9BBF4E;
+  color: var(--secondary);
 }
 
 .map-stat-value {
   font-size: 24px;
   font-weight: 700;
-  color: #4A7554;
+  color: var(--primary);
   margin: 5px 0;
 }
-
 
 .map-wrapper {
   height: 500px;
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
-  border: 2px solid #E5DBC8;
+  border: 2px solid var(--background-light);
   margin-bottom: 25px;
   direction: ltr;
 }
-
 
 .stations-list {
   display: grid;
@@ -135,12 +161,11 @@
   margin-top: 25px;
 }
 
-
 .station-card {
   background: #FFFFFF;
   border-radius: 15px;
   padding: 20px;
-  border: 2px solid #E5DBC8;
+  border: 2px solid var(--background-light);
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -148,35 +173,15 @@
 }
 
 .station-card.selected {
-  background: linear-gradient(135deg, #5F8A61 0%, #9BBF4E 100%);
-  border-color: #5F8A61;
-}
-
-.station-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%);
-  opacity: 0.1;
-}
-
-.station-card.active::before {
-  background: #4A7554;
-}
-
-.station-card.maintenance::before {
-  background: #E09162;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
+  border-color: var(--primary-light);
 }
 
 .station-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(74, 117, 84, 0.15);
-  border-color: #5F8A61;
+  border-color: var(--primary-light);
 }
-
 
 .station-header {
   display: flex;
@@ -190,24 +195,20 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--primary);
+}
+
+.station-name i {
+  color: var(--secondary);
 }
 
 .station-card.selected .station-name {
   color: #FFFFFF;
 }
 
-.station-card:not(.selected) .station-name {
-  color: #4A7554;
-}
-
-.station-name i {
-  color: #9BBF4E;
-}
-
 .station-card.selected .station-name i {
   color: #FFFFFF;
 }
-
 
 .station-status {
   padding: 4px 12px;
@@ -218,12 +219,12 @@
 
 .station-status.active {
   background: rgba(74, 117, 84, 0.1);
-  color: #4A7554;
+  color: var(--primary);
 }
 
-.station-status.maintenance {
-  background: rgba(224, 145, 98, 0.1);
-  color: #E09162;
+.station-status.inactive {
+  background: rgba(155, 191, 78, 0.1);
+  color: var(--secondary);
 }
 
 .station-card.selected .station-status.active {
@@ -231,6 +232,10 @@
   color: #FFFFFF;
 }
 
+.station-card.selected .station-status.inactive {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
 
 .station-details {
   display: grid;
@@ -243,10 +248,11 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  color: #2C3E2F;
 }
 
 .detail-item i {
-  color: #9BBF4E;
+  color: var(--secondary);
   font-size: 12px;
 }
 
@@ -256,6 +262,64 @@
 
 .station-card.selected .detail-item i {
   color: #FFFFFF;
+}
+
+.station-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.station-actions .action-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+}
+
+/* ألوان الأزرار - باستخدام الألوان المطلوبة */
+.station-actions .action-btn.edit {
+  background: var(--bg-input);
+  color: var(--primary);
+}
+
+.station-actions .action-btn.edit:hover {
+  background: var(--background-light);
+}
+
+.station-actions .action-btn.delete {
+  background: var(--bg-input);
+  color: var(--accent);
+}
+
+.station-actions .action-btn.delete:hover {
+  background: #FEE9E0;
+}
+
+.station-actions .action-btn.toggle {
+  background: var(--bg-input);
+  color: var(--primary-light);
+}
+
+.station-actions .action-btn.toggle:hover {
+  background: var(--background-light);
+}
+
+.station-actions .action-btn.toggle.inactive {
+  background: var(--bg-input);
+  color: var(--secondary);
+}
+
+.station-actions .action-btn:hover {
+  transform: scale(1.1);
 }
 
 .station-indicator {
@@ -269,15 +333,131 @@
 }
 
 .station-indicator.active {
-  background: #4A7554;
+  background: var(--primary);
 }
 
-.station-indicator.maintenance {
-  background: #E09162;
+.station-indicator.inactive {
+  background: var(--secondary);
 }
 
 @keyframes pulse {
   0% { transform: scale(1); opacity: 0.7; }
   50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* مودال */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #FFFFFF;
+  border-radius: 25px;
+  padding: 30px;
+  width: 100%;
+  max-width: 550px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--background-light);
+}
+
+.modal-header h3 {
+  color: var(--primary);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #5F6B6A;
+}
+
+.modal-header button:hover {
+  color: var(--accent);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--background-light);
+  border-radius: 12px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: var(--bg-input);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-light);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Cairo';
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }

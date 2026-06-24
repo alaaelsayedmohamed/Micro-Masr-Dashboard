@@ -1,3 +1,14 @@
+/* global.css */
+:root {
+  --primary: #4A7554;
+  --primary-light: #5F8A61;
+  --secondary: #9BBF4E;
+  --background: #F2EEB3;
+  --background-light: #E5DBC8;
+  --bg-input: #F2EEE3;
+  --accent: #E09162;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
 
 * {
@@ -8,10 +19,9 @@
 
 body {
   font-family: 'Cairo', sans-serif;
-  background: #F5F7F0;
+  background: var(--background);
   direction: rtl;
 }
-
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -19,24 +29,23 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #E5DBC8;
+  background: var(--background-light);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9BBF4E;
+  background: var(--secondary);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4A7554;
+  background: var(--primary);
 }
 
 .leaflet-container {
   direction: ltr;
   font-family: 'Cairo', sans-serif;
 }
-
 
 .modal-overlay {
   position: fixed;
@@ -52,7 +61,6 @@ body {
   z-index: 1000;
 }
 
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -61,15 +69,14 @@ table {
 th, td {
   padding: 12px;
   text-align: right;
-  border-bottom: 1px solid #E5DBC8;
+  border-bottom: 1px solid var(--background-light);
 }
 
 th {
-  background-color: #F7FAFC;
-  color: #4A7554;
+  background-color: var(--bg-input);
+  color: var(--primary);
   font-weight: 600;
 }
-
 
 button {
   cursor: pointer;
@@ -82,18 +89,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
-
 input, select, textarea {
   font-family: 'Cairo', sans-serif;
   transition: all 0.3s ease;
+  background: var(--bg-input);
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #5F8A61;
+  border-color: var(--primary-light);
   box-shadow: 0 0 0 3px rgba(95, 138, 97, 0.1);
 }
-
 
 .recharts-wrapper {
   direction: ltr;
@@ -101,11 +107,10 @@ input:focus, select:focus, textarea:focus {
 
 .recharts-default-tooltip {
   background-color: #FFFFFF !important;
-  border: 1px solid #9BBF4E !important;
+  border: 1px solid var(--secondary) !important;
   border-radius: 10px !important;
   font-family: 'Cairo', sans-serif !important;
 }
-
 
 .Toastify__toast-container {
   direction: rtl;
@@ -115,7 +120,6 @@ input:focus, select:focus, textarea:focus {
   font-family: 'Cairo', sans-serif !important;
   border-radius: 15px !important;
 }
-
 
 .custom-marker {
   background: transparent;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { paymentsData, paymentMethodsList } from '../../data/mockData';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { showSuccess, showPaymentNotification } from '../../utils/notifications';
+import { showSuccess, showPaymentNotification, showConfirm } from '../../utils/notifications';
 import '../../styles/PaymentsDashboard.css';
 
 const PaymentsDashboard = () => {
@@ -15,7 +15,6 @@ const PaymentsDashboard = () => {
   const pendingAmount = payments
     .filter(p => p.status === 'pending')
     .reduce((sum, p) => sum + p.amount, 0);
-
 
   const getMethodStats = () => {
     const stats = {};
@@ -55,18 +54,54 @@ const PaymentsDashboard = () => {
     method: method
   }));
 
-  const handlePaymentAction = (payment, action) => {
-    if (action === 'process' && payment.status === 'pending') {
-      setPayments(payments.map(p => 
-        p.id === payment.id ? {...p, status: 'completed'} : p
-      ));
-      showPaymentNotification(payment.amount, 'received');
-    } else if (action === 'refund') {
-      setPayments(payments.map(p => 
-        p.id === payment.id ? {...p, status: 'refunded'} : p
-      ));
-      showPaymentNotification(payment.amount, 'refunded');
-    }
+ 
+  const handleProcessPayment = (payment) => {
+    showConfirm(
+      `هل أنت متأكد من معالجة الدفع بقيمة ${payment.amount} ج.م؟`,
+      () => {
+        setPayments(payments.map(p => 
+          p.id === payment.id ? {...p, status: 'completed'} : p
+        ));
+        showPaymentNotification(payment.amount, 'received');
+      }
+    );
+  };
+
+  
+  const handleCancelPayment = (payment) => {
+    showConfirm(
+      `هل أنت متأكد من إلغاء الدفع بقيمة ${payment.amount} ج.م؟`,
+      () => {
+        setPayments(payments.map(p => 
+          p.id === payment.id ? {...p, status: 'cancelled'} : p
+        ));
+        showSuccess(`تم إلغاء الدفع بقيمة ${payment.amount} ج.م`);
+      }
+    );
+  };
+
+  
+  const handleRefundPayment = (payment) => {
+    showConfirm(
+      `هل أنت متأكد من استرجاع الدفع بقيمة ${payment.amount} ج.م؟`,
+      () => {
+        setPayments(payments.map(p => 
+          p.id === payment.id ? {...p, status: 'refunded'} : p
+        ));
+        showPaymentNotification(payment.amount, 'refunded');
+      }
+    );
+  };
+
+  
+  const handleDeletePayment = (payment) => {
+    showConfirm(
+      `هل أنت متأكد من حذف هذا الدفع؟`,
+      () => {
+        setPayments(payments.filter(p => p.id !== payment.id));
+        showSuccess('تم حذف الدفع بنجاح');
+      }
+    );
   };
 
   return (
@@ -107,15 +142,57 @@ const PaymentsDashboard = () => {
                 {payment.status === 'pending' && 'معلق'}
                 {payment.status === 'failed' && 'فشل'}
                 {payment.status === 'refunded' && 'مسترجع'}
+                {payment.status === 'cancelled' && 'ملغي'}
               </div>
-              {payment.status === 'pending' && (
-                <button
-                  className="process-btn"
-                  onClick={() => handlePaymentAction(payment, 'process')}
-                >
-                  معالجة
-                </button>
-              )}
+              <div className="payment-actions">
+                {payment.status === 'pending' && (
+                  <>
+                    <button
+                      className="process-btn"
+                      onClick={() => handleProcessPayment(payment)}
+                    >
+                      <i className="fas fa-check"></i>
+                      معالجة
+                    </button>
+                    <button
+                      className="cancel-btn"
+                      onClick={() => handleCancelPayment(payment)}
+                    >
+                      <i className="fas fa-times"></i>
+                      إلغاء
+                    </button>
+                  </>
+                )}
+                {payment.status === 'completed' && (
+                  <>
+                    <button
+                      className="refund-btn"
+                      onClick={() => handleRefundPayment(payment)}
+                    >
+                      <i className="fas fa-undo"></i>
+                      استرجاع
+                    </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDeletePayment(payment)}
+                    >
+                      <i className="fas fa-trash"></i>
+                    </button>
+                  </>
+                )}
+                {(payment.status === 'failed' || payment.status === 'cancelled') && (
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDeletePayment(payment)}
+                  >
+                    <i className="fas fa-trash"></i>
+                    حذف
+                  </button>
+                )}
+                {payment.status === 'refunded' && (
+                  <span className="refunded-label">تم الاسترجاع</span>
+                )}
+              </div>
             </div>
           </motion.div>
         ))}
@@ -144,7 +221,6 @@ const PaymentsDashboard = () => {
           <div className="change">{((pendingAmount/totalAmount)*100).toFixed(1)}٪ من الإجمالي</div>
         </div>
 
-       
         <div className="payment-methods-stats">
           <h3><i className="fas fa-chart-pie"></i> توزيع طرق الدفع</h3>
           <div className="methods-grid">
@@ -185,3 +261,7 @@ const PaymentsDashboard = () => {
 };
 
 export default PaymentsDashboard;
+
+
+
+
